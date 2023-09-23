@@ -9,6 +9,7 @@ var session = require('express-session');
 var express = require('express');
 var morgan = require('morgan');
 var csrf = require('csurf');
+var cors = require('cors');
 
 var winston = require('winston');
 var pkg = require('../package.json');
@@ -24,6 +25,9 @@ function init(app, next){
 	server.use(compression({
 		threshold: 512
 	}));
+
+	  // Enable CORS for all routes
+		server.use(cors());
 
 	// Static files middleware
 	server.use(express.static(config.root + '/public'));

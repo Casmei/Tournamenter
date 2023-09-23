@@ -37,9 +37,6 @@ function config(app, next){
 
   server.get('/teams/teamlist',                 ctrls.Team.teamlist);
 
-  server.get('/login',                          ctrls.User.login);
-  server.post('/login',                         ctrls.User.login);
-  server.get('/logout',                         ctrls.User.logout);
 
   server.get('/teams/manage',             auth, ctrls.Team.manage);
   server.get('/teams/find',               auth, ctrls.Team.teamlist);
@@ -75,7 +72,7 @@ function config(app, next){
   server.patch('/views/:id',              auth, ctrls.View.update);
   restify('View', 'views');
 
-  restify('Config', 'configs');
+  restify('Config');
 
 	next();
 }
